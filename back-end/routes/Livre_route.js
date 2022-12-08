@@ -1,0 +1,10 @@
+const express = require('express');
+const passport = require('passport');
+const { createLivre, getLivre, getLivrebyid, deleteLivre, updateLivre } = require('../controllers/Livre_controller');
+const router = express.Router();
+router.post('/createLivre', passport.authenticate('bearer', { session: false }), createLivre);
+router.get('/getLivre', passport.authenticate('bearer', { session: false }), getLivre);
+router.get('/getLivrebyid/:idLivre', passport.authenticate('bearer', { session: false }), getLivrebyid);
+router.put('/updateLivre/:idLivre', passport.authenticate('bearer', { session: false }), updateLivre);
+router.delete('/deleteLivre/:idLivre', passport.authenticate('bearer', { session: false }), deleteLivre);
+module.exports = router;

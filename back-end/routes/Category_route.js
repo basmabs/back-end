@@ -1,0 +1,10 @@
+const express = require('express');
+const { deleteCategory, updateCategory, createCategory, getCategory, getCategorybyid } = require('../controllers/Category_controller');
+const passport = require('passport');
+const router = express.Router();
+router.post('/createCategory', passport.authenticate('bearer', { session: false }), createCategory);
+router.get('/getCategory', passport.authenticate('bearer', { session: false }), getCategory);
+router.get('/getCategorybyid/:idCategory', passport.authenticate('bearer', { session: false }), getCategorybyid);
+router.put('/updateCategory/:idCategory', passport.authenticate('bearer', { session: false }), updateCategory);
+router.delete('/deleteCategory/:idCategory', passport.authenticate('bearer', { session: false }), deleteCategory);
+module.exports = router;
